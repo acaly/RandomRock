@@ -110,7 +110,7 @@ namespace PerlinNoiseTest
             var form = new Form();
             form.ClientSize = new Size(800, 600);
 
-            var s = new DCSolver(MakeFunction(1 / BlockSize), 1000);
+            var s = new DCSolver(MakeFunction(1 / BlockSize), (int)(4 / BlockSize));
             var m = NormalModel.MakeNormal(s.Solve());
 
             using (var device = LightDevice.Create(form))
