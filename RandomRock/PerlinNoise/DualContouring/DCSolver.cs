@@ -44,12 +44,12 @@ namespace PerlinNoise.DualContouring
         {
             GridCoordinate g0 = new GridCoordinate(0, 0, 0);
             GridCoordinate gMove = new GridCoordinate(1, 0, 0);
-            if (_cache.EvaluateAtGrid(g0) < 0)
+            if (_cache.EvaluateAtGrid(g0, GridCoordinate.Zero) < 0)
             {
                 throw new Exception("Origin not contained in shape");
             }
             var g1 = g0 + gMove;
-            while (_cache.EvaluateAtGrid(g1) > 0)
+            while (_cache.EvaluateAtGrid(g1, GridCoordinate.Zero) > 0)
             {
                 g0 = g1;
                 g1 += gMove;
@@ -130,8 +130,8 @@ namespace PerlinNoise.DualContouring
                     {
                         continue;
                     }
-                    var lowVal = _cache.EvaluateAtGrid(newEdge.Low);
-                    var highVal = _cache.EvaluateAtGrid(newEdge.High);
+                    var lowVal = _cache.EvaluateAtGrid(newEdge.Low, GridCoordinate.Zero);
+                    var highVal = _cache.EvaluateAtGrid(newEdge.High, GridCoordinate.Zero);
                     if (lowVal > 0 && highVal < 0)
                     {
                         EnqueueEdge(newEdge, false);
@@ -148,7 +148,8 @@ namespace PerlinNoise.DualContouring
         {
             //Select grid point
             //TODO do real calculation
-            _model.AddVertex(grid.ToVector() + new Vector3(0.5f, 0.5f, 0.5f));
+            //_model.AddVertex(grid.ToVector() + new Vector3(0.5f, 0.5f, 0.5f));
+            _model.AddVertex(_cache.CalculateOptimalPoint(grid));
         }
     }
 }

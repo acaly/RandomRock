@@ -37,7 +37,7 @@ namespace PerlinNoise.Models
                 var v1 = r.Triangles[i].Va;
                 var v2 = r.Triangles[i].Vb;
                 var v3 = r.Triangles[i].Vc;
-                var nn = Vector3.Cross(r.Vertices[v2] - r.Vertices[v1], r.Vertices[v3] - r.Vertices[v1]);
+                var nn = Vector3.Normalize(Vector3.Cross(r.Vertices[v2] - r.Vertices[v1], r.Vertices[v3] - r.Vertices[v1]));
                 ret.Triangles[i] = new Triangle
                 {
                     Va = vlist.Count,

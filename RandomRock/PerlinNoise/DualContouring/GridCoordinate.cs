@@ -11,6 +11,8 @@ namespace PerlinNoise.DualContouring
     {
         public int X, Y, Z;
 
+        public static readonly GridCoordinate Zero = new GridCoordinate();
+
         public GridCoordinate(int x, int y, int z)
         {
             X = x;

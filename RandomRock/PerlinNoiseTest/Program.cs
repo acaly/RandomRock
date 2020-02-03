@@ -36,7 +36,15 @@ namespace PerlinNoiseTest
                 var x = Math.Abs(coord.X);
                 var y = Math.Abs(coord.Y);
                 var z = Math.Abs(coord.Z);
-                return 1 - (Math.Max(x, Math.Max(y, z)) + 0.5f) / 3;
+                return 1 - (Math.Max(x, Math.Max(y, z)) + 0.3f) / 3;
+            }
+        }
+
+        private class TestFunction2 : IFunction
+        {
+            public float Get(uint? seed, Vector3 coord)
+            {
+                return 1 - (coord.Length() + 0.3f) / 30;
             }
         }
 
@@ -110,7 +118,9 @@ namespace PerlinNoiseTest
             var form = new Form();
             form.ClientSize = new Size(800, 600);
 
-            var s = new DCSolver(MakeFunction(1 / BlockSize), (int)(4 / BlockSize));
+            var func = MakeFunction(1 / BlockSize);
+            //var func = new TestFunction2();
+            var s = new DCSolver(func, (int)(4 / BlockSize));
             var m = NormalModel.MakeNormal(s.Solve());
 
             using (var device = LightDevice.Create(form))
