@@ -49,6 +49,10 @@
     <Compile Include="DualContouring\GridCoordinate.cs" />
     <Compile Include="DualContouring\GridEdge.cs" />
     <Compile Include="DualContouring\ModelStorage.cs" />
+    <Compile Include="DualContouring\Optimizer\AbstractOptimizer.cs" />
+    <Compile Include="DualContouring\Optimizer\GridCenterOptimizer.cs" />
+    <Compile Include="DualContouring\Optimizer\QuadraticFunctionOptimizer.cs" />
+    <Compile Include="DualContouring\Optimizer\SurfaceCenterOptimizer.cs" />
     <Compile Include="Functions\Basic\DistanceFunction.cs" />
     <Compile Include="Functions\Basic\GradientFunction.cs" />
     <Compile Include="Functions\Fractal\AbstractFractalFunction.cs" />
