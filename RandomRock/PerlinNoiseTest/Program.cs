@@ -7,6 +7,7 @@ using PerlinNoise.Functions.Fractal;
 using PerlinNoise.Functions.Random;
 using PerlinNoise.Functions.Transform;
 using PerlinNoise.MeshStorage;
+using PerlinNoise.Simplifier;
 using PerlinNoiseTest.Viewer;
 using System;
 using System.Collections.Generic;
@@ -119,9 +120,10 @@ namespace PerlinNoiseTest
             form.ClientSize = new Size(800, 600);
 
             var func = MakeFunction(1 / BlockSize);
-            //var func = new TestFunction2();
-            var s = new DCSolver(func, (int)(4 / BlockSize));
-            var m = NormalMesh.MakeNormal(s.Solve());
+            var meshGenerator = new DCSolver(func, (int)(4 / BlockSize));
+            var rawMesh = meshGenerator.Solve();
+            rawMesh = new MeshSimplifier(rawMesh, ClusterSizeHelper.GetSampleAverage(rawMesh)).Run();
+            var m = NormalMesh.MakeNormal(rawMesh);
 
             using (var device = LightDevice.Create(form))
             {
