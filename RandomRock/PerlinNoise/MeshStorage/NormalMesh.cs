@@ -5,9 +5,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerlinNoise.Models
+namespace PerlinNoise.MeshStorage
 {
-    public class NormalModel
+    public class NormalMesh
     {
         public struct Vertex
         {
@@ -24,9 +24,9 @@ namespace PerlinNoise.Models
         public Vertex[] Vertices;
         public Triangle[] Triangles;
 
-        public static NormalModel MakeNormal(RawModel r)
+        public static NormalMesh MakeNormal(RawMesh r)
         {
-            var ret = new NormalModel
+            var ret = new NormalMesh
             {
                 Positions = r.Vertices.ToArray(),
                 Triangles = new Triangle[r.Triangles.Length],

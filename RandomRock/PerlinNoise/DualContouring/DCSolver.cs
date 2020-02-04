@@ -1,5 +1,5 @@
 ﻿using PerlinNoise.Functions;
-using PerlinNoise.Models;
+using PerlinNoise.MeshStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,7 +34,7 @@ namespace PerlinNoise.DualContouring
             _model = new ModelStorage(size);
         }
 
-        public RawModel Solve()
+        public RawMesh Solve()
         {
             Run();
             return _model.Generate();

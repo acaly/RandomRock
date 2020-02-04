@@ -5,9 +5,9 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PerlinNoise.Models
+namespace PerlinNoise.MeshStorage
 {
-    public class RawModel
+    public class RawMesh
     {
         public struct Triangle
         {

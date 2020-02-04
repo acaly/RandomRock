@@ -70,10 +70,11 @@
     <Compile Include="Functions\Transform\ScaleDomainToSphereFunction.cs" />
     <Compile Include="Functions\Transform\StairFunction.cs" />
     <Compile Include="Functions\Transform\TranslateDomainFunction.cs" />
-    <Compile Include="Models\NormalModel.cs" />
-    <Compile Include="Models\RawModel.cs" />
+    <Compile Include="MeshStorage\NormalMesh.cs" />
+    <Compile Include="MeshStorage\RawMesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MathF.cs" />
+    <Compile Include="Simplifier\MeshSimplifier.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

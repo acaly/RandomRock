@@ -1,4 +1,4 @@
-﻿using PerlinNoise.Models;
+﻿using PerlinNoise.MeshStorage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,16 +76,16 @@ namespace PerlinNoise.DualContouring
             }
         }
 
-        public RawModel Generate()
+        public RawMesh Generate()
         {
-            var ret = new RawModel
+            var ret = new RawMesh
             {
                 Vertices = _vertices.ToArray(),
-                Triangles = new RawModel.Triangle[_indices.Count / 3],
+                Triangles = new RawMesh.Triangle[_indices.Count / 3],
             };
             for (var i = 0; i < ret.Triangles.Length; ++i)
             {
-                ret.Triangles[i] = new RawModel.Triangle
+                ret.Triangles[i] = new RawMesh.Triangle
                 {
                     Va = _indices[i * 3 + 0],
                     Vb = _indices[i * 3 + 1],
