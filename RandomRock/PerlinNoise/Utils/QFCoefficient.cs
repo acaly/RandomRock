@@ -32,23 +32,23 @@ namespace PerlinNoise.Utils
                 Values[8] * p.Z;
         }
 
-        public void Reset(Vector3 bias, float biasMagnitude)
+        public void AddBias(Vector3 bias, float biasMagnitude)
         {
-            Array.Clear(Values, 0, Values.Length);
-
-            if (biasMagnitude > 0)
-            {
-                SetAxisConst(0, bias.X, biasMagnitude);
-                SetAxisConst(1, bias.Y, biasMagnitude);
-                SetAxisConst(2, bias.Z, biasMagnitude);
-            }
+            AddAxisBias(0, bias.X, biasMagnitude);
+            AddAxisBias(1, bias.Y, biasMagnitude);
+            AddAxisBias(2, bias.Z, biasMagnitude);
         }
 
-        private void SetAxisConst(int axis, float val, float mag)
+        public void Reset()
+        {
+            Array.Clear(Values, 0, Values.Length);
+        }
+
+        private void AddAxisBias(int axis, float val, float mag)
         {
             var index = _coefficientAxisMap[axis];
-            Values[index[0]] = mag;
-            Values[index[3]] = -2 * mag * val;
+            Values[index[0]] += mag;
+            Values[index[3]] += -2 * mag * val;
         }
 
         public QFCoefficient Clone()

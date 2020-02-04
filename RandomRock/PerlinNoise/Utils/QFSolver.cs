@@ -20,9 +20,9 @@ namespace PerlinNoise.Utils
             var vv = coefficient.Values;
 
             Matrix4x4 c = new Matrix4x4(
-                vv[0], vv[3], vv[5], 0,
-                0, vv[1], vv[4], 0,
-                0, 0, vv[2], 0,
+                vv[0], vv[3] / 2, vv[5] / 2, 0,
+                vv[3] / 2, vv[1], vv[4] / 2, 0,
+                vv[5] / 2, vv[4] / 2, vv[2], 0,
                 0, 0, 0, 1);
             if (!Matrix4x4.Invert(c, out var ic))
             {
@@ -30,7 +30,7 @@ namespace PerlinNoise.Utils
             }
             var b = new Vector4(vv[6], vv[7], vv[8], 0);
 
-            var ret = Vector4.Transform(b, ic) * -0.5f;
+            var ret = Vector4.Transform(b, Matrix4x4.Transpose(ic)) * -0.5f;
             return new Vector3(ret.X, ret.Y, ret.Z);
         }
     }

@@ -14,7 +14,7 @@ namespace PerlinNoise.Simplifier
         private readonly float _clusterSize;
 
         private readonly AbstractVertexGroup _vgroup = new SimpleGridGroup();
-        private readonly AbstractGroupMerger _merger = new SimpleAverageGroupMerger();
+        private readonly AbstractGroupMerger _merger = new LeastDistanceGroupMerger();
 
         public MeshSimplifier(RawMesh mesh, float clusterSize)
         {

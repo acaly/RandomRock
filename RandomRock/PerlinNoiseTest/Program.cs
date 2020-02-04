@@ -122,7 +122,7 @@ namespace PerlinNoiseTest
             var func = MakeFunction(1 / BlockSize);
             var meshGenerator = new DCSolver(func, (int)(4 / BlockSize));
             var rawMesh = meshGenerator.Solve();
-            rawMesh = new MeshSimplifier(rawMesh, ClusterSizeHelper.GetSampleAverage(rawMesh)).Run();
+            rawMesh = new MeshSimplifier(rawMesh, ClusterSizeHelper.GetSampleAverage(rawMesh, 3)).Run();
             var m = NormalMesh.MakeNormal(rawMesh);
 
             using (var device = LightDevice.Create(form))

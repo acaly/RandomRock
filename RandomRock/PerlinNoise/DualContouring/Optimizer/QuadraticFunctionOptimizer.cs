@@ -10,11 +10,11 @@ namespace PerlinNoise.DualContouring.Optimizer
 {
     class QuadraticFunctionOptimizer : AbstractOptimizer
     {
-        private QFCoefficient _qfCoefficient;
+        private QFCoefficient _qfCoefficient = new QFCoefficient();
 
         private static Vector3 SolveQF(QFCoefficient coefficient)
         {
-            const float constraint = 0.7f;
+            const float constraint = 0.9f;
             const float constraintMax = 1 + constraint, constraintMin = 1 - constraint;
 
             var p = QFSolver.Solve(coefficient);
@@ -72,7 +72,8 @@ namespace PerlinNoise.DualContouring.Optimizer
 
         public override void Reset()
         {
-            _qfCoefficient.Reset(new Vector3(1, 1, 1), 0.1f);
+            _qfCoefficient.Reset();
+            _qfCoefficient.AddBias(new Vector3(0.5f, 0.5f, 0.5f), 0.01f);
         }
 
         public override void AddCrossEdge(Vector3 position, Vector3 gradient)
