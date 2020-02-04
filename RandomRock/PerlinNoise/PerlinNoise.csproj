@@ -73,7 +73,7 @@
     <Compile Include="MeshStorage\NormalMesh.cs" />
     <Compile Include="MeshStorage\RawMesh.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="MathF.cs" />
+    <Compile Include="Utils\MathF.cs" />
     <Compile Include="Simplifier\AbstractGroupMerger.cs" />
     <Compile Include="Simplifier\AbstractVertexGroup.cs" />
     <Compile Include="Simplifier\ClusterSizeHelper.cs" />
@@ -81,6 +81,8 @@
     <Compile Include="Simplifier\SimpleAverageGroupMerger.cs" />
     <Compile Include="Simplifier\SimpleGridGroup.cs" />
     <Compile Include="Simplifier\TriangleGroup.cs" />
+    <Compile Include="Utils\QFCoefficient.cs" />
+    <Compile Include="Utils\QFSolver.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
